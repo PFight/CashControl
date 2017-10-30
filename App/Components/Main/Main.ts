@@ -1,20 +1,29 @@
-﻿import { Alina, Models } from "../Imports";
+﻿import { Alina, Models, D, DC } from "../Imports";
 import * as Components from "../Index";
 
-export class Main implements Alina.ISingleNodeComponent {
+export class Main extends Alina.SingleNodeComponent {
   root: Alina.ISingleNodeRenderer;
-  products: Models.Product[];
+  products = D.atom([] as Models.Product[]);
+  atom1 = D.atom(42);
 
   initialize(context: Alina.ISingleNodeRenderer) {
-    this.root = context;
-    context.elem.innerHTML = "";
-    context.elem.appendChild(Alina.fromTemplate(this.template));
+    super.initialize(context);
+
+    setInterval(() => {
+      this.atom1.set(this.atom1.get() + 1);
+      this.products.set([...this.products.get(), {
+        name: "Test " + this.atom1.get(),
+        categories: [],
+        icon: "",
+        price: 42
+      }]);
+    }, 2000);
   }
 
   template = Alina.makeTemplate(`
     <div>
       <header>
-      
+        The trooth is @truth
       </header>
       <section id="current-cash">
         Current cash list
@@ -26,9 +35,12 @@ export class Main implements Alina.ISingleNodeComponent {
   `);
 
   render() {
-    this.root.query("#product-list").mount(Components.ProductList)
-      .render(this.products)
-      .onItemClick.set(this.onProductClick);
+    this.root.tpl().replaceChild(this.template, (root) => {
+      root.getEntries("@truth").mount(DC.DSet).set(this.atom1);
+      root.query("#product-list").mount(Components.ProductList)
+        .onItemClick.set(this.onProductClick)
+          .render(this.products);      
+    });
   }
 
   onProductClick = (product: Models.Product) => {

@@ -1,10 +1,10 @@
-﻿import { Alina, Models } from "../Imports";
+﻿import { Alina, Models, D, DC } from "../Imports";
 
 export class ProductList implements Alina.ISingleNodeComponent {
-  private node: Alina.ISingleNodeRenderer;
+  private node: DC.ISingleNodeRenderer;
 
   initialize(context: Alina.ISingleNodeRenderer) {
-    this.node = context;
+    this.node = context.ext(DC.DerivableSingle);
   }
 
   private template = Alina.makeTemplate(`
@@ -19,7 +19,7 @@ export class ProductList implements Alina.ISingleNodeComponent {
 
   onItemClick = new Alina.Slot<(item: Models.Product) => void, this>(this);
 
-  render(products: Models.Product[]) {
+  render(products: D.Derivable<Models.Product[]>) {
     this.node.tpl().replaceChildren(this.template, (root) => {
       root.repeat("#item", products, (item, product) => {
         item.set("@itemName", product.name);

@@ -1,0 +1,8 @@
+{
+  "jspm": {
+    "configFile": "systemjs-config.js",
+    "dependencies": {
+      "derivable": "npm:derivable@^0.12.1"
+    }
+  }
+}

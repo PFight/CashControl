@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="systemjs-config.js" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup />
@@ -35,12 +36,25 @@
     <TypeScriptCompile Include="App\Components\ProductList\ProductList.ts" />
     <TypeScriptCompile Include="App\Models\Index.ts" />
     <TypeScriptCompile Include="App\Models\Product.ts" />
-    <TypeScriptCompile Include="External\Alina\Alina.ts" />
+    <TypeScriptCompile Include="External\Alina\alina.ts" />
+    <TypeScriptCompile Include="External\Alina\AlEntry.ts" />
+    <TypeScriptCompile Include="External\Alina\AlFind.ts" />
+    <TypeScriptCompile Include="External\Alina\AlQuery.ts" />
     <TypeScriptCompile Include="External\Alina\AlTemplate.ts" />
-    <TypeScriptCompile Include="External\Alina\Index.ts" />
     <TypeScriptCompile Include="External\Alina\AlRepeat.ts" />
     <TypeScriptCompile Include="External\Alina\AlSet.ts" />
     <TypeScriptCompile Include="External\Alina\AlShow.ts" />
+    <TypeScriptCompile Include="External\derivable.d.ts" />
+    <TypeScriptCompile Include="External\DerivableAlina\DRenderer.ts" />
+    <TypeScriptCompile Include="External\DerivableAlina\DRepeat.ts" />
+    <TypeScriptCompile Include="External\DerivableAlina\DShow.ts" />
+    <TypeScriptCompile Include="External\DerivableAlina\DSet.ts" />
+    <TypeScriptCompile Include="External\Alina\Interfaces.ts" />
+    <TypeScriptCompile Include="External\Alina\Renderer.ts" />
+    <TypeScriptCompile Include="External\Alina\Slot.ts" />
+    <TypeScriptCompile Include="External\Alina\Utils.ts" />
+    <TypeScriptCompile Include="External\DerivableAlina\Index.ts" />
+    <TypeScriptCompile Include="External\DerivableAlina\Interfaces.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
