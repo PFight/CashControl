@@ -14,8 +14,12 @@ System.register(["../Alina/alina", "derivable", "./Index"], function (exports_1,
     function on(value, callback, key) {
         var _this = this;
         if (D.isDerivable(value)) {
-            value.react(function (val) {
-                standardOn.call(_this, val, callback);
+            this.getComponentContext(on, key, function () {
+                var $disposed = D.atom(false);
+                _this.addDisposeListener(function () { return $disposed.set(true); });
+                value.react(function (val) {
+                    standardOn.call(_this, val, callback);
+                }, { until: $disposed });
             });
         }
         else {

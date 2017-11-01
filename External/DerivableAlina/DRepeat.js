@@ -1,4 +1,4 @@
-System.register(["../Alina/alina", "derivable"], function (exports_1, context_1) {
+System.register(["../Alina/alina", "derivable", "./Index"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -11,7 +11,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
         };
     })();
     var __moduleName = context_1 && context_1.id;
-    var Alina, D, DRepeat;
+    var Alina, D, DA, DRepeat;
     return {
         setters: [
             function (Alina_1) {
@@ -19,6 +19,9 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
             },
             function (D_1) {
                 D = D_1;
+            },
+            function (DA_1) {
+                DA = DA_1;
             }
         ],
         execute: function () {
@@ -33,7 +36,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
                         this.root.once(function () {
                             items.react(function (values) {
                                 _this.root.mount(Alina.AlRepeat).repeat(values, update, options);
-                            });
+                            }, { from: _this.$initialized, until: _this.$disposed });
                         });
                     }
                     else {
@@ -46,7 +49,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
                         this.root.once(function () {
                             items.react(function (values) {
                                 _this.root.mount(Alina.AlRepeat).repeatEx(values, context);
-                            });
+                            }, { from: _this.$initialized, until: _this.$disposed });
                         });
                     }
                     else {
@@ -54,7 +57,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
                     }
                 };
                 return DRepeat;
-            }(Alina.AlinaComponent));
+            }(DA.AlinaComponent));
             exports_1("DRepeat", DRepeat);
         }
     };

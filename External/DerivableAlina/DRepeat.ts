@@ -1,13 +1,14 @@
 ﻿import * as Alina from "../Alina/alina";
 import * as D from "derivable";
+import * as DA from "./Index";
 
-export class DRepeat extends Alina.AlinaComponent {
+export class DRepeat extends DA.AlinaComponent {
   repeat<T>(items: T[] | D.Derivable<T[]>, update: (renderer: Alina.Alina, model: T) => void, options?: Alina.RepeatExtraOptions<T>) {
     if (D.isDerivable(items)) {
       this.root.once(() => {
         (items as D.Derivable<T[]>).react((values: T[]) => {
           this.root.mount(Alina.AlRepeat).repeat(values, update, options);
-        });
+        }, { from: this.$initialized, until: this.$disposed });
       });
     } else {
       this.root.mount(Alina.AlRepeat).repeat(items as T[], update, options);
@@ -19,7 +20,7 @@ export class DRepeat extends Alina.AlinaComponent {
       this.root.once(() => {
         (items as D.Derivable<T[]>).react((values: T[]) => {
           this.root.mount(Alina.AlRepeat).repeatEx(values, context);
-        });
+        }, { from: this.$initialized, until: this.$disposed });
       });
     } else {
       this.root.mount(Alina.AlRepeat).repeatEx(items as T[], context);

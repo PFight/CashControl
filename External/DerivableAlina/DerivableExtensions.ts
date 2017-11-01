@@ -23,8 +23,12 @@ var standardOn: Function;
 
 function on<T>(this: Alina.Alina, value: T | D.Derivable<T>, callback: (renderer, value?: T, prevValue?: T) => T | void, key?: string): void {
   if (D.isDerivable(value)) {
-    (value as D.Derivable<T>).react((val) => {
-      standardOn.call(this, val, callback);
+    this.getComponentContext(on, key, () => {
+      let $disposed = D.atom(false);
+      this.addDisposeListener(() => $disposed.set(true));
+      (value as D.Derivable<T>) .react((val) => {
+        standardOn.call(this, val, callback);
+      }, { until: $disposed });
     });
   } else {
     standardOn.call(this, value, callback);

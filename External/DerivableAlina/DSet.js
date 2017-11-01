@@ -1,4 +1,4 @@
-System.register(["../Alina/alina", "derivable"], function (exports_1, context_1) {
+System.register(["../Alina/alina", "derivable", "./Index"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -11,7 +11,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
         };
     })();
     var __moduleName = context_1 && context_1.id;
-    var Alina, D, DSet;
+    var Alina, D, DA, DSet;
     return {
         setters: [
             function (Alina_1) {
@@ -19,6 +19,9 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
             },
             function (D_1) {
                 D = D_1;
+            },
+            function (DA_1) {
+                DA = DA_1;
             }
         ],
         execute: function () {
@@ -33,7 +36,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
                         this.root.once(function () {
                             return value.react(function (val) {
                                 _this.root.mount(Alina.AlSet).set(val);
-                            });
+                            }, { from: _this.$initialized, until: _this.$disposed });
                         });
                     }
                     else {
@@ -41,7 +44,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
                     }
                 };
                 return DSet;
-            }(Alina.AlinaComponent));
+            }(DA.AlinaComponent));
             exports_1("DSet", DSet);
         }
     };

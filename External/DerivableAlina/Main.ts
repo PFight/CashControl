@@ -1,9 +1,21 @@
 ﻿import * as Alina from "../Alina/alina";
 import * as DA from "./Index";
-
+import * as D from "derivable";
 
 export type Alina = Alina.Alina & DA.DerivableExtensions;
-export class AlinaComponent extends Alina.Component<Alina> { };
+export class AlinaComponent extends Alina.Component<Alina> {
+  $initialized = D.atom(false);
+  $disposed = D.atom(false);
+
+  protected onInit() {
+    this.$initialized.set(true);
+  }
+
+  protected onDispose() {
+    this.$initialized.set(false);
+    this.$disposed.set(true);
+  }
+};
 export type FuncAlinaComponent<PropsT, RetT> = Alina.FuncComponent<Alina, PropsT, RetT>;
 
 export var Document: Alina = Alina.Document.ext(DA.DerivableExt);

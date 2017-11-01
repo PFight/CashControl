@@ -1,4 +1,4 @@
-System.register(["../Alina/alina", "./Index"], function (exports_1, context_1) {
+System.register(["../Alina/alina", "./Index", "derivable"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -11,7 +11,7 @@ System.register(["../Alina/alina", "./Index"], function (exports_1, context_1) {
         };
     })();
     var __moduleName = context_1 && context_1.id;
-    var Alina, DA, AlinaComponent, Document;
+    var Alina, DA, D, AlinaComponent, Document;
     return {
         setters: [
             function (Alina_1) {
@@ -19,14 +19,27 @@ System.register(["../Alina/alina", "./Index"], function (exports_1, context_1) {
             },
             function (DA_1) {
                 DA = DA_1;
+            },
+            function (D_1) {
+                D = D_1;
             }
         ],
         execute: function () {
             AlinaComponent = /** @class */ (function (_super) {
                 __extends(AlinaComponent, _super);
                 function AlinaComponent() {
-                    return _super !== null && _super.apply(this, arguments) || this;
+                    var _this = _super !== null && _super.apply(this, arguments) || this;
+                    _this.$initialized = D.atom(false);
+                    _this.$disposed = D.atom(false);
+                    return _this;
                 }
+                AlinaComponent.prototype.onInit = function () {
+                    this.$initialized.set(true);
+                };
+                AlinaComponent.prototype.onDispose = function () {
+                    this.$initialized.set(false);
+                    this.$disposed.set(true);
+                };
                 return AlinaComponent;
             }(Alina.Component));
             exports_1("AlinaComponent", AlinaComponent);
