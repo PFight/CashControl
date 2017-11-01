@@ -4,7 +4,8 @@
 		"module": "system",
 		"moduleResolution": "node",
 		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
+    "experimentalDecorators": true,
+    "strictFunctionTypes": true,
     "noEmitHelpers": false,
     "importHelpers":  false,
 		"lib": [ "es6", "dom" ]

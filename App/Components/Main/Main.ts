@@ -5,8 +5,8 @@ export class Main extends DC.AlinaComponent {
   products = D.atom([] as Models.Product[]);
   atom1 = D.atom(42);
 
-  constructor() {
-    super();
+  constructor(root: DC.Alina) {
+    super(root);
 
     setInterval(() => {
       this.atom1.set(this.atom1.get() + 1);     
@@ -39,7 +39,7 @@ export class Main extends DC.AlinaComponent {
       root.set("@truth", this.atom1);
       root.query("#product-list").mount(Components.ProductList)
         .onItemClick.set(this.onProductClick)
-        .render(this.products);      
+        .render(this.products);
     });
   }
 

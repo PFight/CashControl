@@ -1,7 +1,6 @@
 ﻿import { Alina, Models, D, DC } from "../Imports";
 
 export class ProductList extends DC.AlinaComponent {
-
   private template = Alina.makeTemplate(`
     <ul>
       <template id="item">

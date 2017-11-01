@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -45,7 +45,6 @@
     <TypeScriptCompile Include="External\Alina\AlSet.ts" />
     <TypeScriptCompile Include="External\Alina\AlShow.ts" />
     <TypeScriptCompile Include="External\derivable.d.ts" />
-    <TypeScriptCompile Include="External\DerivableAlina\DRenderer.ts" />
     <TypeScriptCompile Include="External\DerivableAlina\DRepeat.ts" />
     <TypeScriptCompile Include="External\DerivableAlina\DShow.ts" />
     <TypeScriptCompile Include="External\DerivableAlina\DSet.ts" />
@@ -54,7 +53,8 @@
     <TypeScriptCompile Include="External\Alina\Slot.ts" />
     <TypeScriptCompile Include="External\Alina\Utils.ts" />
     <TypeScriptCompile Include="External\DerivableAlina\Index.ts" />
-    <TypeScriptCompile Include="External\DerivableAlina\Interfaces.ts" />
+    <TypeScriptCompile Include="External\DerivableAlina\DerivableExtensions.ts" />
+    <TypeScriptCompile Include="External\DerivableAlina\Main.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
