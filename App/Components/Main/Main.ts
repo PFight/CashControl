@@ -1,23 +1,23 @@
 ﻿import { Alina, Models, D, DC } from "../Imports";
 import * as Components from "../Index";
 
-export class Main extends Alina.SingleNodeComponent {
-  root: Alina.ISingleNodeRenderer;
+export class Main extends DC.AlinaComponent {
   products = D.atom([] as Models.Product[]);
   atom1 = D.atom(42);
 
-  initialize(context: Alina.ISingleNodeRenderer) {
-    super.initialize(context);
+  constructor() {
+    super();
 
     setInterval(() => {
-      this.atom1.set(this.atom1.get() + 1);
-      this.products.set([...this.products.get(), {
-        name: "Test " + this.atom1.get(),
-        categories: [],
-        icon: "",
-        price: 42
-      }]);
+      this.atom1.set(this.atom1.get() + 1);     
     }, 2000);
+
+    this.products.set([...this.products.get(), {
+      name: "Test " + this.atom1.get(),
+      categories: [],
+      icon: "",
+      price: 42
+    }]);
   }
 
   template = Alina.makeTemplate(`
@@ -35,11 +35,11 @@ export class Main extends Alina.SingleNodeComponent {
   `);
 
   render() {
-    this.root.tpl().replaceChild(this.template, (root) => {
-      root.getEntries("@truth").mount(DC.DSet).set(this.atom1);
+    this.root.tpl().setChild(this.template, (root) => {
+      root.set("@truth", this.atom1);
       root.query("#product-list").mount(Components.ProductList)
         .onItemClick.set(this.onProductClick)
-          .render(this.products);      
+        .render(this.products);      
     });
   }
 

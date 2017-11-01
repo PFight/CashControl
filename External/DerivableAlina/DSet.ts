@@ -1,7 +1,7 @@
 ﻿import * as Alina from "../Alina/alina";
 import * as D from "derivable";
 
-export class DSet extends Alina.MultiNodeComponent {
+export class DSet extends Alina.AlinaComponent {
   set<T>(value: T | D.Derivable<T>) {
     if (D.isDerivable(value)) {
       this.root.once(() =>

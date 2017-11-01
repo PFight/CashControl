@@ -1,4 +1,4 @@
-System.register(["./DRepeat", "./DSet", "./DShow", "./DRenderer"], function (exports_1, context_1) {
+System.register(["./Main", "./DRepeat", "./DSet", "./DShow", "./DerivableExtensions"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -10,6 +10,9 @@ System.register(["./DRepeat", "./DSet", "./DShow", "./DRenderer"], function (exp
     }
     return {
         setters: [
+            function (Main_1_1) {
+                exportStar_1(Main_1_1);
+            },
             function (DRepeat_1_1) {
                 exportStar_1(DRepeat_1_1);
             },
@@ -19,8 +22,8 @@ System.register(["./DRepeat", "./DSet", "./DShow", "./DRenderer"], function (exp
             function (DShow_1_1) {
                 exportStar_1(DShow_1_1);
             },
-            function (DRenderer_1_1) {
-                exportStar_1(DRenderer_1_1);
+            function (DerivableExtensions_1_1) {
+                exportStar_1(DerivableExtensions_1_1);
             }
         ],
         execute: function () {

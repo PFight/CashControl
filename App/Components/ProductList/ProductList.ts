@@ -1,17 +1,17 @@
 ﻿import { Alina, Models, D, DC } from "../Imports";
 
-export class ProductList implements Alina.ISingleNodeComponent {
-  private node: DC.ISingleNodeRenderer;
-
-  initialize(context: Alina.ISingleNodeRenderer) {
-    this.node = context.ext(DC.DerivableSingle);
-  }
+export class ProductList extends DC.AlinaComponent {
 
   private template = Alina.makeTemplate(`
     <ul>
       <template id="item">
         <li>
-          <button onclick=@itemClick >@itemName</button>
+          <template id="button-view">
+            <button onclick=@itemClick >@itemName</button>
+          </template>
+          <template id="simple-view">
+            <span>@itemName</span>
+          </template>
         </li>
       </template>
     </ul>
@@ -20,8 +20,10 @@ export class ProductList implements Alina.ISingleNodeComponent {
   onItemClick = new Alina.Slot<(item: Models.Product) => void, this>(this);
 
   render(products: D.Derivable<Models.Product[]>) {
-    this.node.tpl().replaceChildren(this.template, (root) => {
+    this.root.tpl().setChild(this.template, (root) => {
       root.repeat("#item", products, (item, product) => {
+        item.showIf("#button-view", product.price > 42); 
+        item.showIf("#simple-view", product.price <= 42);
         item.set("@itemName", product.name);
         item.set("@itemClick", this.onItemClick.value);
       });

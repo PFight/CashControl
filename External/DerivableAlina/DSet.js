@@ -41,7 +41,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
                     }
                 };
                 return DSet;
-            }(Alina.MultiNodeComponent));
+            }(Alina.AlinaComponent));
             exports_1("DSet", DSet);
         }
     };

@@ -4,3 +4,4 @@ obj
 *.csproj.user
 App/**/*.js
 jspm_packages/
+External/Alina

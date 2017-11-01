@@ -1,8 +1,8 @@
 ﻿import * as Alina from "../Alina/alina";
 import * as D from "derivable";
 
-export class DRepeat extends Alina.SingleNodeComponent {
-  repeat<T>(items: T[] | D.Derivable<T[]>, update: (renderer: Alina.Renderer, model: T) => void, options?: Alina.RepeatExtraOptions<T>) {
+export class DRepeat extends Alina.AlinaComponent {
+  repeat<T>(items: T[] | D.Derivable<T[]>, update: (renderer: Alina.Alina, model: T) => void, options?: Alina.RepeatExtraOptions<T>) {
     if (D.isDerivable(items)) {
       this.root.once(() => {
         (items as D.Derivable<T[]>).react((values: T[]) => {

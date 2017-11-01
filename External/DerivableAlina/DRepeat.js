@@ -54,7 +54,7 @@ System.register(["../Alina/alina", "derivable"], function (exports_1, context_1)
                     }
                 };
                 return DRepeat;
-            }(Alina.SingleNodeComponent));
+            }(Alina.AlinaComponent));
             exports_1("DRepeat", DRepeat);
         }
     };

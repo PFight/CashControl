@@ -1,7 +1,7 @@
 ﻿import * as Alina from "../Alina/alina";
 import * as D from "derivable";
 
-export class DShow extends Alina.MultiNodeComponent {
+export class DShow extends Alina.AlinaComponent {
   showIf(value: boolean | D.Derivable<boolean>) {
     if (D.isDerivable(value)) {
       this.root.once(() =>
