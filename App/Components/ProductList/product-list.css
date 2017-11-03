@@ -1,0 +1,17 @@
+﻿.product-list__list {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.product-list__item {
+  display: inline-block; }
+
+.product-list__button {
+  background: none;
+  border: none;
+  padding: 7px;
+  margin: 5px;
+  font: inherit; }
+  .product-list__button:hover, .product-list__button:active {
+    background-color: rgba(1, 1, 1, 0.1); }
+

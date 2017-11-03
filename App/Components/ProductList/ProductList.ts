@@ -7,10 +7,10 @@ export class ProductList extends DA.AlinaComponent {
   public onItemClick: (item: Models.Product) => void;
 
   protected template = this.makeTemplate(`
-    <ul class=${this.style.ul}>
+    <ul class="product-list__list"}>
       <template id="item">
-        <li class=${this.style.listItem}>
-          <button onclick=@itemClick class=${this.style.button} >
+        <li class="product-list__item">
+          <button onclick=@itemClick class="product-list__button" >
             @itemName
           </button>
         </li>
@@ -26,30 +26,4 @@ export class ProductList extends DA.AlinaComponent {
       });
     });
   }
-
-  protected get style() {
-    return {
-      ul: style({
-        listStyle: "none",
-        margin: 0,
-        padding: 0
-      }),
-      listItem: style({
-        color: 'red',
-        display: 'inline-block'
-      }),
-      button: style({
-        background: "none",
-        border: "none",
-        padding: 7,
-        margin: 5,
-        font: "inherit",
-        $nest: {
-          "&:hover": {
-            backgroundColor: "rgba(1, 1, 1, 0.1)"
-          }
-        }
-      })
-    };
-  };
 }
