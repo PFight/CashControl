@@ -3,7 +3,7 @@ import * as DA from "./Index";
 import * as D from "derivable";
 
 export type Alina = Alina.Alina & DA.DerivableExtensions;
-export class AlinaComponent extends Alina.Component<Alina> {
+export class AlinaComponent<ContextT extends Alina = Alina> extends Alina.AlinaComponent<ContextT> {
   $initialized = D.atom(false);
   $disposed = D.atom(false);
 

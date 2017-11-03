@@ -1,5 +1,5 @@
 ﻿import { Main } from "./Components/Main/Main";
-import { Alina, DC } from "./Imports";
+import { Alina, DA } from "./Imports";
 
 class App {
   initialize() {
@@ -17,7 +17,7 @@ class App {
   // The scope of 'this' is the event. In order to call the 'receivedEvent'
   // function, we must explicity call 'app.receivedEvent(...);'
   onDeviceReady() {
-    DC.Document.query("#app").mount(Main).render();
+    DA.Document.query("#app").mount(Main).render();
   }
 };
 

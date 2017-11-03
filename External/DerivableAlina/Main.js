@@ -41,7 +41,7 @@ System.register(["../Alina/alina", "./Index", "derivable"], function (exports_1,
                     this.$disposed.set(true);
                 };
                 return AlinaComponent;
-            }(Alina.Component));
+            }(Alina.AlinaComponent));
             exports_1("AlinaComponent", AlinaComponent);
             ;
             exports_1("Document", Document = Alina.Document.ext(DA.DerivableExt));

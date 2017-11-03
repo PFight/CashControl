@@ -37,7 +37,7 @@ function on<T>(this: Alina.Alina, value: T | D.Derivable<T>, callback: (renderer
 
 function set<T>(this: Alina.NodeContext, stub: string, value: T | D.Derivable<T>): void {
   this.mount(Alina.AlEntry).getEntries(stub, (context) => {
-    context.mount(DA.DSet).set(value);
+    context.mount(DA.DSet).setEntry(value);
   });
 }
 

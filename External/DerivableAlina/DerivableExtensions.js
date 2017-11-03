@@ -28,7 +28,7 @@ System.register(["../Alina/alina", "derivable", "./Index"], function (exports_1,
     }
     function set(stub, value) {
         this.mount(Alina.AlEntry).getEntries(stub, function (context) {
-            context.mount(DA.DSet).set(value);
+            context.mount(DA.DSet).setEntry(value);
         });
     }
     function repeat(templateSelector, items, update) {

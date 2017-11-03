@@ -1,30 +1,52 @@
-﻿import { Alina, Models, D, DC } from "../Imports";
+﻿import { Alina, Models, DJS, DA } from "../Imports";
 import { style } from "typestyle";
 
-const listItemStyle = style({ $debugName: "listItemStyle",
-  color: 'red'
-});
+export class ProductList extends DA.AlinaComponent {
+  public onItemClick: (item: Models.Product) => void;
 
-export class ProductList extends DC.AlinaComponent {
-  private template = Alina.makeTemplate(`
-    <ul>
+  protected template = this.makeTemplate(`
+    <ul class=${this.style.ul}>
       <template id="item">
-        <li class="${listItemStyle}">
-          <button onclick=@itemClick >@itemName</button>
+        <li class=${this.style.listItem}>
+          <button onclick=@itemClick class=${this.style.button} >
+            @itemName
+          </button>
         </li>
       </template>
     </ul>
   `);
 
-  onItemClick = new Alina.Slot<(item: Models.Product) => void, this>(this);
-
-  render(products: D.Derivable<Models.Product[]>) {
-    this.root.tpl().setChild(this.template, (root) => {
+  public render(products: DJS.Derivable<Models.Product[]>) {
+    this.setChild(this.template, (root) => {
       root.repeat("#item", products, (item, product) => {
         item.set("@itemName", product.name);
-        item.set("@itemClick", this.onItemClick.value);
+        item.set("@itemClick", this.onItemClick);
       });
     });
-    return this;
   }
+
+  protected get style() {
+    return {
+      ul: style({
+        listStyle: "none",
+        margin: 0,
+        padding: 0
+      }),
+      listItem: style({
+        color: 'red',
+        display: 'inline-block'
+      }),
+      button: style({
+        background: "none",
+        border: "none",
+        padding: 7,
+        margin: 5,
+        $nest: {
+          "&:hover": {
+            backgroundColor: "rgba(1, 1, 1, 0.1)"
+          }
+        }
+      })
+    };
+  };
 }
