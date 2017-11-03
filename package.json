@@ -2,7 +2,11 @@
   "jspm": {
     "configFile": "systemjs-config.js",
     "dependencies": {
-      "derivable": "npm:derivable@^0.12.1"
+      "derivable": "npm:derivable@^0.12.1",
+      "typestyle": "npm:typestyle@^1.5.1"
     }
+  },
+  "dependencies": {
+    "typestyle": "^1.5.1"
   }
 }

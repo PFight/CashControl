@@ -5,3 +5,4 @@ obj
 App/**/*.js
 jspm_packages/
 External/Alina
+node_modules/
