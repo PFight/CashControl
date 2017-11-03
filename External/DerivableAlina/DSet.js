@@ -43,6 +43,19 @@ System.register(["../Alina/alina", "derivable", "./Index"], function (exports_1,
                         this.root.mount(Alina.AlSet).setEntry(value);
                     }
                 };
+                DSet.prototype.setEntryOnce = function (value) {
+                    var _this = this;
+                    if (D.isDerivable(value)) {
+                        this.root.once(function () {
+                            return value.react(function (val) {
+                                _this.root.mount(Alina.AlSet).setEntryOnce(val);
+                            }, { from: _this.$initialized, until: _this.$disposed });
+                        });
+                    }
+                    else {
+                        this.root.mount(Alina.AlSet).setEntryOnce(value);
+                    }
+                };
                 return DSet;
             }(DA.AlinaComponent));
             exports_1("DSet", DSet);

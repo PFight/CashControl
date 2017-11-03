@@ -2,6 +2,8 @@
 import { style } from "typestyle";
 
 export class ProductList extends DA.AlinaComponent {
+
+  @Alina.defaultEmptyFunc
   public onItemClick: (item: Models.Product) => void;
 
   protected template = this.makeTemplate(`
@@ -20,7 +22,7 @@ export class ProductList extends DA.AlinaComponent {
     this.setChild(this.template, (root) => {
       root.repeat("#item", products, (item, product) => {
         item.set("@itemName", product.name);
-        item.set("@itemClick", this.onItemClick);
+        item.setOnce("@itemClick", () => this.onItemClick(product));
       });
     });
   }
@@ -41,6 +43,7 @@ export class ProductList extends DA.AlinaComponent {
         border: "none",
         padding: 7,
         margin: 5,
+        font: "inherit",
         $nest: {
           "&:hover": {
             backgroundColor: "rgba(1, 1, 1, 0.1)"

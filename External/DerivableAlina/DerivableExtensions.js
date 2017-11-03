@@ -4,6 +4,7 @@ System.register(["../Alina/alina", "derivable", "./Index"], function (exports_1,
     function DerivableExt(renderer) {
         var result = renderer;
         result.set = set;
+        result.setOnce = setOnce;
         result.showIf = showIf;
         result.repeat = repeat;
         standardOn = result.on;
@@ -29,6 +30,11 @@ System.register(["../Alina/alina", "derivable", "./Index"], function (exports_1,
     function set(stub, value) {
         this.mount(Alina.AlEntry).getEntries(stub, function (context) {
             context.mount(DA.DSet).setEntry(value);
+        });
+    }
+    function setOnce(stub, value) {
+        this.mount(Alina.AlEntry).getEntries(stub, function (context) {
+            context.mount(DA.DSet).setEntryOnce(value);
         });
     }
     function repeat(templateSelector, items, update) {

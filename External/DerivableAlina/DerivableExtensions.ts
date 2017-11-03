@@ -4,6 +4,7 @@ import * as DA from "./Index";
 
 export interface DerivableExtensions {
   set<T>(stub: string, value: T | D.Derivable<T>): void;
+  setOnce<T>(stub: string, value: T | D.Derivable<T>): void;
   showIf(templateSelector: string, value: boolean | D.Derivable<boolean>): void;
   repeat<T>(templateSelector: string, items: T[] | D.Derivable<T[]>, update: (renderer: this, model: T) => void): void;
   on<T>(value: T | D.Derivable<T>, callback: (renderer: this, value?: T, prevValue?: T) => T | void, key?: string): void;
@@ -12,6 +13,7 @@ export interface DerivableExtensions {
 export function DerivableExt<T extends Alina.Alina>(renderer: T): T & DerivableExtensions {
   let result = renderer as T & DerivableExtensions;
   result.set = set;
+  result.setOnce = setOnce;
   result.showIf = showIf;
   result.repeat = repeat;
   standardOn = result.on;
@@ -38,6 +40,12 @@ function on<T>(this: Alina.Alina, value: T | D.Derivable<T>, callback: (renderer
 function set<T>(this: Alina.NodeContext, stub: string, value: T | D.Derivable<T>): void {
   this.mount(Alina.AlEntry).getEntries(stub, (context) => {
     context.mount(DA.DSet).setEntry(value);
+  });
+}
+
+function setOnce<T>(this: Alina.NodeContext, stub: string, value: T | D.Derivable<T>): void {
+  this.mount(Alina.AlEntry).getEntries(stub, (context) => {
+    context.mount(DA.DSet).setEntryOnce(value);
   });
 }
 
