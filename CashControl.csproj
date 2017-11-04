@@ -42,6 +42,9 @@
     <TypeScriptCompile Include="App\Components\ProductList\ProductList.ts" />
     <TypeScriptCompile Include="App\Models\Index.ts" />
     <TypeScriptCompile Include="App\Models\Product.ts" />
+    <TypeScriptCompile Include="App\Services\Imports.ts" />
+    <TypeScriptCompile Include="App\Services\Index.ts" />
+    <TypeScriptCompile Include="App\Services\ProductService.ts" />
     <TypeScriptCompile Include="External\Alina\alina.ts" />
     <TypeScriptCompile Include="External\Alina\AlEntry.ts" />
     <TypeScriptCompile Include="External\Alina\AlFind.ts" />

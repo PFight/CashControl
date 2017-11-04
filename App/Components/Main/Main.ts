@@ -13,6 +13,7 @@ export class Main extends DA.AlinaComponent {
     }, 2000);
 
     this.products.set([...this.products.get(), {
+      id: "test",
       name: "Test " + this.atom1.get(),
       categories: [],
       icon: "",
