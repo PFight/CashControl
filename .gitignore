@@ -3,6 +3,9 @@ bin
 obj
 *.csproj.user
 App/**/*.js
+App/**/*.css
 jspm_packages/
 External/Alina
 node_modules/
+External/DerivableAlina/**/*.js
+*.css.map
